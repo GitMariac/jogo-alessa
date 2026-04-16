@@ -1,6 +1,6 @@
 # 🎮 Projeto Jogo Educativo - Alessa
 
-Este projeto é surgiu como parte avaliativa do Projeto de Extensão da Faculdade de Análise e Desenvolvimento de Sistemas Anhanguera desdobrado de outro projeto desenvolvido na mesma Instituição estadual de ensino no semestre anterior. Estar com a comunidade escolar despertou um desejo de transformar a educação em escolas públicas através do uso de tecnologias que agregassem ao leque de opções do professor e despertasse nos alunos interesse e incentivo. 
+Este projeto surgiu como parte avaliativa do Projeto de Extensão da Faculdade de Análise e Desenvolvimento de Sistemas Anhanguera desdobrado de outro projeto desenvolvido na mesma Instituição estadual de ensino no semestre anterior. Estar com a comunidade escolar despertou um desejo de buscar a transformação da educação em escolas públicas através do uso de tecnologias que agregassem ao leque de opções do professor e despertasse nos alunos interesse e incentivo. 
 
 ## 📖 Diário de Bordo (Histórico Acadêmico)
 
