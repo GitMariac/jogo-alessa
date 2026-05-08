@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Board from "../Board";
 import { GameCard } from "../GameCard";
 import { GameButton } from "../GameButton";
 import { ArrowLeft, Clock, Trophy } from "lucide-react";
+
+
 
 interface GamePlayProps {
   gameType: "ortografia" | "acentuacao";
@@ -49,11 +52,9 @@ export function GamePlay({ gameType, onBack }: GamePlayProps) {
           transition={{ duration: 0.3 }}
           className="mb-8"
         >
-          <GameCard className="min-h-[400px] flex items-center justify-center relative">
-            <div className="text-center">
-              <p className="text-[#9ca3af] text-xl mb-8">Caça palavras</p>
-              <div className="text-white text-6xl font-bold">🎮</div>
-              <p className="text-[#9ca3af] mt-4">Área do jogo</p>
+          <GameCard className="min-h-[450px] relative p-8">
+            <div className="flex justify-center items-center h-full">
+              <Board />
             </div>
 
             {/* Score indicator in corner */}
