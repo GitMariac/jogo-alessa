@@ -2,6 +2,7 @@
 
 const RANK_KEY = "@jogo-alessa:ranking";
 const USER_KEY = "@jogo-alessa:user-profile";
+const SETTINGS_KEY = "@jogo-alessa:settings";
 
 export interface RankingEntry {
   nome: string;
@@ -9,6 +10,20 @@ export interface RankingEntry {
   score: number;
   data: string;
 }
+
+export interface GameSettings {
+  audioGame: boolean;
+  music: boolean;
+  animation: boolean;
+  volume: number;
+}
+
+const DEFAULT_SETTINGS: GameSettings = {
+  audioGame: true,
+  music: true,
+  animation: true,
+  volume: 75,
+};
 
 export const gameStorage = {
   // Salva uma nova pontuação na lista
@@ -40,12 +55,21 @@ export const gameStorage = {
   },
 
   // Gerenciamento do perfil do aluno
-  saveUserProfile: (nome: string) => {
-    localStorage.setItem(USER_KEY, JSON.stringify({ nome }));
+  saveUserProfile: (nome: string, avatar: string = "Sandrinha") => {
+    localStorage.setItem(USER_KEY, JSON.stringify({ nome, avatar }));
   },
 
-  getUserProfile: (): { nome: string } | null => {
+  getUserProfile: (): { nome: string; avatar: string } | null => {
     const data = localStorage.getItem(USER_KEY);
     return data ? JSON.parse(data) : null;
+  },
+
+  saveSettings: (settings: GameSettings) => {
+    localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
+  },
+
+  getSettings: (): GameSettings => {
+    const data = localStorage.getItem(SETTINGS_KEY);
+    return data ? JSON.parse(data) : DEFAULT_SETTINGS;
   },
 };

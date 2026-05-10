@@ -4,16 +4,35 @@ import { ArrowLeft, Volume2, Music, Zap, User } from "lucide-react";
 import { Switch } from "../ui/switch";
 import { Slider } from "../ui/slider";
 import { useState } from "react";
+import { gameStorage, GameSettings } from "../../../utils/storage";
+import { AvatarSelector } from "../AvatarSelector";
 
 interface SettingsProps {
   onBack: () => void;
 }
 
 export function Settings({ onBack }: SettingsProps) {
-  const [audioGame, setAudioGame] = useState(true);
-  const [music, setMusic] = useState(true);
-  const [animation, setAnimation] = useState(true);
-  const [volume, setVolume] = useState([75]);
+  const [settings, setSettings] = useState<GameSettings>(gameStorage.getSettings());
+  const [selectedAvatar, setSelectedAvatar] = useState<string>(
+    gameStorage.getUserProfile()?.avatar || "Sandrinha"
+  );
+  const [showAvatarSelector, setShowAvatarSelector] = useState(false);
+
+  const avatarOptions = ["Sandrinha", "Alessa", "Marina", "Sofia", "Luna", "Iris"];
+
+  const updateSetting = <K extends keyof GameSettings>(key: K, value: GameSettings[K]) => {
+    const newSettings = { ...settings, [key]: value };
+    setSettings(newSettings);
+    gameStorage.saveSettings(newSettings);
+  };
+
+  const handleAvatarChange = (avatar: string) => {
+    setSelectedAvatar(avatar);
+    const profile = gameStorage.getUserProfile();
+    if (profile) {
+      gameStorage.saveUserProfile(profile.nome, avatar);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-black p-8">
@@ -53,10 +72,10 @@ export function Settings({ onBack }: SettingsProps) {
                     <p className="text-[#9ca3af] text-sm">Ativar/desativar sons do jogo</p>
                   </div>
                 </div>
-                <Switch checked={audioGame} onCheckedChange={setAudioGame} />
+                <Switch checked={settings.audioGame} onCheckedChange={(val) => updateSetting("audioGame", val)} />
               </div>
               
-              {audioGame && (
+              {settings.audioGame && (
                 <motion.div
                   className="mt-6 pl-10"
                   initial={{ opacity: 0, height: 0 }}
@@ -64,13 +83,13 @@ export function Settings({ onBack }: SettingsProps) {
                 >
                   <p className="text-[#9ca3af] text-sm mb-3">Volume</p>
                   <Slider
-                    value={volume}
-                    onValueChange={setVolume}
+                    value={[settings.volume]}
+                    onValueChange={(val) => updateSetting("volume", val[0])}
                     max={100}
                     step={1}
                     className="w-full"
                   />
-                  <p className="text-white text-sm mt-2 text-right">{volume[0]}%</p>
+                  <p className="text-white text-sm mt-2 text-right">{settings.volume}%</p>
                 </motion.div>
               )}
             </GameCard>
@@ -91,7 +110,7 @@ export function Settings({ onBack }: SettingsProps) {
                     <p className="text-[#9ca3af] text-sm">Música de fundo</p>
                   </div>
                 </div>
-                <Switch checked={music} onCheckedChange={setMusic} />
+                <Switch checked={settings.music} onCheckedChange={(val) => updateSetting("music", val)} />
               </div>
             </GameCard>
           </motion.div>
@@ -111,7 +130,7 @@ export function Settings({ onBack }: SettingsProps) {
                     <p className="text-[#9ca3af] text-sm">Efeitos visuais e transições</p>
                   </div>
                 </div>
-                <Switch checked={animation} onCheckedChange={setAnimation} />
+                <Switch checked={settings.animation} onCheckedChange={(val) => updateSetting("animation", val)} />
               </div>
             </GameCard>
           </motion.div>
@@ -123,7 +142,7 @@ export function Settings({ onBack }: SettingsProps) {
             transition={{ delay: 0.6 }}
           >
             <GameCard>
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-4">
                   <User className="w-6 h-6 text-[#dc2626]" />
                   <div>
@@ -135,10 +154,27 @@ export function Settings({ onBack }: SettingsProps) {
                   className="bg-[#dc2626] hover:bg-[#b91c1c] text-white px-6 py-2 rounded-lg font-semibold transition-colors"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={() => setShowAvatarSelector(!showAvatarSelector)}
                 >
-                  Editar
+                  {showAvatarSelector ? "Fechar" : "Editar"}
                 </motion.button>
               </div>
+              
+              {showAvatarSelector && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="mt-4 pt-4 border-t border-[#2a2a2a]"
+                >
+                  <p className="text-[#9ca3af] text-sm mb-4">Escolha seu avatar:</p>
+                  <AvatarSelector
+                    avatars={avatarOptions}
+                    selectedAvatar={selectedAvatar}
+                    onSelect={handleAvatarChange}
+                  />
+                </motion.div>
+              )}
             </GameCard>
           </motion.div>
         </motion.div>

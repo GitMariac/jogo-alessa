@@ -24,7 +24,8 @@ export function MainMenu({ onNavigate }: MainMenuProps) {
 
   const handleSaveName = () => {
     if (userName.trim()) {
-      gameStorage.saveUserProfile(userName.trim());
+      const profile = gameStorage.getUserProfile();
+      gameStorage.saveUserProfile(userName.trim(), profile?.avatar || "Sandrinha");
       setIsEditing(false);
     }
   };
@@ -143,7 +144,13 @@ export function MainMenu({ onNavigate }: MainMenuProps) {
         transition={{ delay: 0.9 }}
         className="mt-12 text-center"
       >
-        <p className="text-[#9ca3af] text-sm">Créditos e contact us</p>
+        <p className="text-[#9ca3af] text-sm">
+          Desenvolvido com ❤️ para a educação pública. 
+          <br />
+          <a href="https://github.com/GitMariac/jogo-alessa" target="_blank" rel="noopener noreferrer" className="hover:text-white underline transition-colors">
+            Ver no GitHub
+          </a>
+        </p>
       </motion.div>
     </div>
   );

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { GameAvatar } from "../GameAvatar";
 import { GameCard } from "../GameCard";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Medal } from "lucide-react";
 import { gameStorage, RankingEntry } from "../../../utils/storage";
 import { useEffect, useState } from "react";
 

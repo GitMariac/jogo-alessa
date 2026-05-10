@@ -1,4 +1,3 @@
-game - engine.ts;
 // utils/game-engine.ts
 
 export type GridType = string[][];

@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { generateGameGrid, GridType, Position } from "../utils/game-engine";
-import { wordsDatabase } from "../data/words";
+import { wordsDatabase } from "../data/words-database";
 import { gameStorage } from "../utils/storage";
 
 export function useWordSearch(

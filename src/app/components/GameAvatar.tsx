@@ -15,8 +15,10 @@ export function GameAvatar({ name, size = "md", position }: GameAvatarProps) {
   };
 
   const getInitials = (name: string) => {
+    if (!name) return "?";
     return name
       .split(" ")
+      .filter(n => n.length > 0)
       .map((n) => n[0])
       .join("")
       .toUpperCase()
