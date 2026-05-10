@@ -25,6 +25,10 @@ Com o resultado, passamos a implementar A transição do design (Figma) para o c
 - **Aprendizado:** Entendi que "rodar liso no Figma" é um simulacro; a vida real exige configuração de PostCSS, gerenciamento de pacotes via NPM e ajustes manuais de diretivas de CSS. 
 
 Além disso também começamos com os esboços do avatar principal do jogo (A Alessa, inspirada na professora de português). Para a sua criação adotamos um fluxo de co-criação com IA: o conceito e a descrição detalhada foram estruturados via ChatGPT bem como a geração da imagem original, e foi refinada pelo Nano Banana 2. Esse processo permitiu transformar a inspiração na professora de português em uma identidade visual concreta para o jogo.
+| Inicial | Comemorando | Triste | Raiva | Feliz | Explicação |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| <img width="150" height="150" alt="Avatar inicial" src="https://github.com/user-attachments/assets/d106bc73-cae0-447e-8693-74825bbe4f7e" /> | <img width="150" height="150" alt="comemorando" src="https://github.com/user-attachments/assets/7fe30e08-506e-47dd-83eb-3cf71c236e7a" /> | <img width="150" height="150" alt="triste" src="https://github.com/user-attachments/assets/af8144f0-9e36-4992-b665-2da0de313443" /> | <img width="150" height="150" alt="raiva" src="https://github.com/user-attachments/assets/79a4b19d-5df1-4ae6-9d83-cecbb44305cd" /> | <img width="150" height="150" alt="feliz" src="https://github.com/user-attachments/assets/b33aeb1e-adbf-4bea-a28f-b5657409a3eb" /> | <img width="150" height="150" alt="explicação" src="https://github.com/user-attachments/assets/8680297e-26c0-4685-9657-71e5cedd653f" /> |
+
 
 ### 🛠️ Tecnologias e Ferramentas
 
@@ -38,3 +42,56 @@ Além disso também começamos com os esboços do avatar principal do jogo (A Al
 - ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS_v4-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white) **Tailwind CSS v4:** Estilização utilitária com foco em modernidade e performance (v4).
 - ![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=flat-square&logo=framer&logoColor=white) **Framer Motion:** Implementação de micro-interações e transições fluidas.
 - ![Lucide](https://img.shields.io/badge/Lucide_React-374151?style=flat-square&logo=lucide&logoColor=white) **Lucide React:** Biblioteca de ícones vetoriais.
+
+### Fase 2: Esboço do Back-End 
+Separei a engine da interface para garantir o desacoplamento e melhor manutenção dos componentes do código seguindo a linha do mercado, seguindo padrões de separação de responsabilidades para garantir um código limpo e fácil de manter.
+
+Começamos a pensar na estrutura do caça-palavras e de como seria implementado. Tinhamos duas abordagens iniciais: com o Word Canvas e como estrutura de Matriz. 
+Para esta parte, o motor de geração de palavras, recorremos para seu desenvolvimento o auxílio de ferramentas de IA (Gemini/ChatGPT), visando aplicar padrões otimizados de algoritmos de busca e preenchimento de matrizes. Depois Procuramos compreender 
+
+#### 🧩 Game Engine - Caça-Palavras (Word Search)
+
+Este módulo contém a lógica central (Engine) para a geração dinâmica de uma grade de Caça-Palavras. Ele foi desenvolvido em **TypeScript** e foca em eficiência e flexibilidade para diferentes tamanhos de jogo.
+
+##### 📋 Funcionalidades
+
+- **Geração Dinâmica:** Cria grades de qualquer tamanho (N x N).
+- **Posicionamento Multi-Direcional:** Suporta palavras na horizontal, vertical e diagonal.
+- **Inteligência de Sobreposição:** Permite que palavras compartilhem letras em comum.
+- **Preenchimento Automático:** Completa os espaços vazios com letras aleatórias (A-Z).
+- **Rastreamento de Respostas:** Retorna as coordenadas exatas das palavras colocadas para facilitar a validação do jogo.
+
+---
+
+#### 🛠️ Estrutura do Código
+
+O motor utiliza três pilares principais:
+
+##### 1. Definições de Tipos
+O código utiliza `GridType` para representar a matriz de strings e `Position` para gerenciar coordenadas específicas na grade.
+
+##### 2. Funções de Validação e Escrita
+* **`canPlace`**: Verifica se há espaço suficiente e se não há conflito com outras letras.
+* **`place`**: Escreve a palavra na grade e mapeia suas coordenadas para o banco de dados do jogo.
+
+##### 3. Algoritmo de Preenchimento
+O sistema tenta posicionar cada palavra até 50 vezes em locais aleatórios antes de desistir, garantindo que a grade não fique travada em loops infinitos.
+
+---
+
+####🏆 Lógica de Armazenamento e Ranking
+
+O código organiza a persistência em três pilares: Definição de Dados, Gestão de Ranking e Perfil do Usuário.
+
+##### 📋 Funcionalidades
+-**Estrutura de Dados (Interface):** O uso da interface RankingEntry garante que todo item no ranking tenha o mesmo formato, evitando erros de dados faltando:
+-nome e avatar: Identificação visual do aluno.
+-score: Valor numérico para ordenação.
+-data: Registro temporal (ISO string) de quando a pontuação foi feita.
+-**Funções do Ranking (gameStorage):** O objeto gameStorage centraliza as operações para manter o código limpo e reutilizável. O saveScore salva e processa os dados, recupera a lista atual de jogadores, adiciona a nova pontuação, ordena, persiste convertendo o array para String (JSON) e salva no navegador.
+-**getRanking e clearRanking:** O getRanking tenta ler o RANK_KEY. Se estiver vazio (primeira vez jogando), retorna um array vazio [] para evitar erros de renderização. Já o clearRanking remove a chave do ranking. 
+
+-**Perfil do Usuário**: Diferente do ranking, que é uma lista, o perfil (USER_KEY) armazena apenas os dados do aluno atual. Isso permite que o jogo "lembre" quem está jogando sem que ele precise digitar o nome toda vez que iniciar uma nova partida.
+
+--
+
