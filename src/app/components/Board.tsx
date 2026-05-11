@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Position } from '../../utils/game-engine';
-
+import { generateGameGrid } from "../../utils/game-engine";
+import type { Position } from "../../utils/game-engine";
 interface BoardProps {
   grid: string[][];
   selectedCells: Position[];
