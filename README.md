@@ -94,4 +94,18 @@ O código organiza a persistência em três pilares: Definição de Dados, Gest�
 -**Perfil do Usuário**: Diferente do ranking, que é uma lista, o perfil (USER_KEY) armazena apenas os dados do aluno atual. Isso permite que o jogo "lembre" quem está jogando sem que ele precise digitar o nome toda vez que iniciar uma nova partida.
 
 --
+Nessa fase recebemos os primeiros avatares a serem disponibilizados paraos jogadores escolherem em seu perfil. Ficaram uma fofura! A ideia é que na hora de acesso do jogador ele possa escolher o avatar juntamente a entrada do nome. O avatar ficará no ranking e na identificação do jogador. 
+
+
+| **Avatar dos jogadores** | | | | | |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+<img width="150" height="150" alt="1" src="https://github.com/user-attachments/assets/e64e98be-e9c9-42b8-a560-852f1687e82b" /> | <img width="150" height="150" alt="2" src="https://github.com/user-attachments/assets/ee3189f0-da70-4971-88cf-e129a4b2f54f" /> | <img width="150" height="150" alt="3" src="https://github.com/user-attachments/assets/0b05d0e1-a18e-4c0e-8da3-be2fd796f61f" /> | <img width="150" height="150" alt="5" src="https://github.com/user-attachments/assets/0a610001-5832-485a-92c4-eaee5c2629a0" /> | <img width="150" height="150" alt="6" src="https://github.com/user-attachments/assets/6d8a251a-4325-4a01-b2e2-c670e5843138" /> | <img width="150" height="150" alt="7" src="https://github.com/user-attachments/assets/6438b610-c88c-4f18-a88c-dadf3ff5d30a" /> | 
+| <img width="150" height="150" alt="8" src="https://github.com/user-attachments/assets/886f3317-77a5-4e9a-b4ca-5214e309c3b0" /> | <img width="150" height="150" alt="9" src="https://github.com/user-attachments/assets/caa0d7ac-a865-422b-a0b0-c7cec94c9391" /> | <img width="150" height="150" alt="10" src="https://github.com/user-attachments/assets/311ea905-bce3-439d-babc-9cddc6b479d8" /> | <img width="150" height="150" alt="11" src="https://github.com/user-attachments/assets/bd392e31-3c53-4422-9c67-9dfde2678aae" /> | <img width="150" height="150" alt="12" src="https://github.com/user-attachments/assets/cb88609b-d195-42b0-88e1-f9359efa489a" /> | |
+
+
+
+
+
+
+
 
