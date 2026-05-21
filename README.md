@@ -79,7 +79,7 @@ O sistema tenta posicionar cada palavra até 50 vezes em locais aleatórios ante
 
 ---
 
-####🏆 Lógica de Armazenamento e Ranking
+#### 🏆 Lógica de Armazenamento e Ranking
 
 O código organiza a persistência em três pilares: Definição de Dados, Gestão de Ranking e Perfil do Usuário.
 
@@ -102,7 +102,26 @@ Nessa fase recebemos os primeiros avatares a serem disponibilizados paraos jogad
 <img width="150" height="150" alt="1" src="https://github.com/user-attachments/assets/e64e98be-e9c9-42b8-a560-852f1687e82b" /> | <img width="150" height="150" alt="2" src="https://github.com/user-attachments/assets/ee3189f0-da70-4971-88cf-e129a4b2f54f" /> | <img width="150" height="150" alt="3" src="https://github.com/user-attachments/assets/0b05d0e1-a18e-4c0e-8da3-be2fd796f61f" /> | <img width="150" height="150" alt="5" src="https://github.com/user-attachments/assets/0a610001-5832-485a-92c4-eaee5c2629a0" /> | <img width="150" height="150" alt="6" src="https://github.com/user-attachments/assets/6d8a251a-4325-4a01-b2e2-c670e5843138" /> | <img width="150" height="150" alt="7" src="https://github.com/user-attachments/assets/6438b610-c88c-4f18-a88c-dadf3ff5d30a" /> | 
 | <img width="150" height="150" alt="8" src="https://github.com/user-attachments/assets/886f3317-77a5-4e9a-b4ca-5214e309c3b0" /> | <img width="150" height="150" alt="9" src="https://github.com/user-attachments/assets/caa0d7ac-a865-422b-a0b0-c7cec94c9391" /> | <img width="150" height="150" alt="10" src="https://github.com/user-attachments/assets/311ea905-bce3-439d-babc-9cddc6b479d8" /> | <img width="150" height="150" alt="11" src="https://github.com/user-attachments/assets/bd392e31-3c53-4422-9c67-9dfde2678aae" /> | <img width="150" height="150" alt="12" src="https://github.com/user-attachments/assets/cb88609b-d195-42b0-88e1-f9359efa489a" /> | |
 
+## Mudança de Arquitetura do Projeto
 
+Ao longo do desenvolvimento do projeto foram constatados vários percalços que acabaram atravancando o avançar do projeto. A mudança para TypeScript, uma linguagem da qual não dominamos, e o excesso de dependências, configurações e abstrações acabou transformando um projeto relativamente simples em uma estrutura difícil de manter dentro do tempo disponível. Em determinados momentos, o foco deixou de ser o desenvolvimento do jogo em si e passou a ser a resolução de problemas de ambiente, build e compatibilidade
+
+Mesmo que, inicialmente, o projeto foi desenvolvido utilizando React e outras ferramentas modernas do ecossistema frontend, com o objetivo de aprofundar os estudos e experimentar uma arquitetura mais robusta, durante o desenvolvimento, a complexidade estrutural começou a crescer além das necessidades reais do projeto.
+
+Diante disso, foi tomada a decisão de reestruturar o projeto utilizando HTML, CSS e JavaScript puros. A escolha não representa um retrocesso técnico, mas sim uma decisão consciente de engenharia e gerenciamento de escopo e tempo, afinal temos prazo para entrega do projeto.
+
+A mudança foi inspirada pelo princípio de que estruturas excessivamente complexas podem prejudicar projetos pequenos ou em fase inicial — ideia frequentemente associada à filosofia do minimalismo em software e ao conceito de *overengineering* (engenharia excessiva).
+
+O objetivo passou a ser:
+- priorizar entendimento real da aplicação;
+- reduzir dependências externas;
+- facilitar manutenção;
+- aumentar produtividade;
+- garantir a conclusão funcional do projeto.
+
+A versão antiga em React foi mantida dentro do repositório como parte do processo de aprendizagem e da evolução do desenvolvimento e, quem sabe mais tarde por diversão, podemos voltar a ele e desenvolver da maneira que queremos não só com um tema único, mas um conjunto de vários outros temas e habilidades. 
+
+Fizemos a estrutura inspirada no layout inicial.
 
 
 
