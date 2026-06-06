@@ -110,12 +110,14 @@ Com isso em mente, utilizamos da Engenharia de Contexto para desenvolvermos a se
 
 ## No Prompt do Lovable
 
-Na implementação do prompt começamos pela descrição inicial do projeto, o que era e o que se pretendia atingir. Levamos características técnicas como o uso do nav e footer como elementos fixos, a disposição dos elementos entre os dois (itens de navegação, menus, link, avatar). Usamos a imagem criada e refinada do avatar e incluimos o uso de animações de CSS, Java Script ou python. Estabelecemos uma estrutura inicial em HTML mesmo que o projeto estivesse sendo codado em Typescript, Tailwind e React, pois estas tecnologias estavam mais apuradas pelas autoras.  
+Fizemos vários testes tentando entender a tecnologia além de buscarmos conhecimento através de cursos e leitura de documentação, artigos e afins correlatos para entender o processo e ganhar expertise. Foram percebidos algumas questões como melhores maneiras de estruturar um prompt, qual ferramenta era melhor para qual aspecto, o que a IA ainda não consegue fazer etc. 
+
+Quando fomos implementar o Banco de Dados, por exemplo, percebemos algo interessante. A IA alucina muito com listas de palavras! Modelos de linguagem operam por meio de geração probabilística de texto, elas não entendem gramática em si. E a depender da versão e da ferramenta que estiver sendo utilizada, aí que a coisa desanda mesmo. Apesar de não sermos profícuas em gramática, não queríamos correr o risco de virar meme no ensino fundamental já em meia idade. Foi quando surgiu a ideia de usarmos a tecnologia do NotebookLM pois trabalha somente com o contexto do que oferecermos a ele. Usamos então uma gramática e pedimos para que ele retirasse naquele conteúdo 30 palavras de cada classe (Oxítonas, paroxítonas, proparoxítonas, hiatos e exceções) além das regras que regem a acentuação de cada uma delas, sua escrita sem acento ou com acento errado. Montamos assim nossa estrutura de dados em array de tuplas em WordEntry[]. 
+
+Na implementação do prompt do Lovable começamos pela descrição inicial do projeto, o que era e o que se pretendia atingir. Levamos características técnicas como o uso do nav e footer como elementos fixos, a disposição dos elementos entre os dois (itens de navegação, menus, link, avatar). Usamos a imagem criada e refinada do avatar e incluimos o uso de animações de CSS, Java Script ou python. Estabelecemos uma estrutura inicial em HTML mesmo que o projeto estivesse sendo codado em Typescript, Tailwind e React, pois estas tecnologias estavam mais apuradas pelas autoras. 
 
 Segue o link do MD no Github do Lovable bem como suas entradas posteriores:
 https://github.com/GitMariac/prompt-do-lovable-alessa/edit/main/README.md
-
-Quando fomos implementar o Banco de Dados percebemos algo interessante. A IA alucina muito com listas de palavras! Modelos de linguagem operam por meio de geração probabilística de texto, elas não entendem gramática em si. E a depender da versão que estiver sendo utilizada, aí que a coisa desanda mesmo. Apesar de não sermos profícuas em gramática, não queríamos correr o risco de virar meme no ensino fundamental já em meia idade. Foi quando surgiu a ideia de usarmos a tecnologia do NotebookLM pois trabalha somente com o contexto do que oferecermos a ele. Usei então uma gramática e pedi para que ele retirasse naquele conteúdo 30 palavras de cada classe (Oxítonas, paroxítonas, proparoxítonas, hiatos e exceções) além das regras que regem a acentuação de cada uma delas, sua escrita sem acento ou com acento errado. Montamos assim nossa estrutura de dados em array de tuplas em WordEntry[]. 
 
 Trouxemos uma interface Dark com Paletas de cor e contrates, aparência Cyberpunk e uso de Grassmorphim, glow effects e soft shadows. Estabelecemos o sistema de Ranking e persistência de dados dos jogadores (nome, pontuação, posição no ranking) e ligação com planilha no GoogleShets para salvar histórico de partidas e ranking. 
 
@@ -124,4 +126,6 @@ Após isso rodamos e fizemos os primeiros testes.
 
 <img width="1000" height="600" alt="Captura de tela 2026-05-30 171313" src="https://github.com/user-attachments/assets/718d590b-b231-43a7-b1bf-8c5db6cf1207" />
 
-Após os primeiros testes, foram encontradas algumas inconsistências como tamanho da fonte, tamanho do tabuleiro, avatar a frente das letras, então fomos organizando todas as pequenas coisas que notamos nos testes e acrescentando todos os novos comandos ao MD do prompt no Github.
+Após os primeiros testes, foram encontradas algumas inconsistências como tamanho da fonte, tamanho do tabuleiro, avatar a frente das letras, então fomos organizando todas as pequenas coisas que notamos nos testes e acrescentando todos os novos comandos ao MD do prompt no Github ou foram corrigidas a "mão". 
+
+
