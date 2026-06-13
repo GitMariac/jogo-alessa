@@ -128,4 +128,22 @@ Após isso rodamos e fizemos os primeiros testes.
 
 Após os primeiros testes, foram encontradas algumas inconsistências como tamanho da fonte, tamanho do tabuleiro, avatar a frente das letras, então fomos organizando todas as pequenas coisas que notamos nos testes e acrescentando todos os novos comandos ao MD do prompt no Github ou foram corrigidas a "mão". 
 
+Identificamos que o código da Engine do jogo se travata de uma estrutura simples e onde a lógica da aplicação em TypeScript está estruturada predominantemente por meio de condicionais. Apesar de ter facilitado o compreendimento da lógica e a boa leitura do código torna o escalonamento a longo prazo inviável. Como o projeto é considerado pequeno, isso é adequado, mas para projetos maiores e que necessitariam de implementações futuras, o certo seria evitar a ploriferação de If/Else e implementar algo orientado a abordagens que agregam escalabilidade tais como Pattern Matching, Data-Driven Design ou Strategy Pattern. 
 
+Fizemos pequenas correções que foram observadas ao longo da leitura, testes de comportamento e passamos a testar com usuários externos a equipe de desenvolvimento buscando observar a intuitibilidade e jogabilidade além de buscar melhorias. 
+
+Finalizado, esta parte passamos a pensar no ranking e no armazenamento dos dados. Entendemos então que para este escopo o melhor seria um Local Storage.  
+
+Para viabilizar a consolidação dos resultados obtidos e que a professora tivesse acesso aos dados finais caso quisesse instalar uma competição, a solução implementada foi de integrar o Local Storage a uma planilha no Google Sheets como repositório centralizado de pontuação. A professora poderia limpar os dados do navegador no final de um trabalho.  
+
+Implementamos a integração do Google sheets criando uma tabela em disponibilizando publicamente. Com o Antigravity criamos um código JavaScript contendo a função doPost que recebe os resultados das partidas e salva na tabela do Google Sheets e a configuramos para receber os dados concedendo as permissões para implantar.  
+
+Desta forma o arquivo de storage envia automaticamente as partidas para a tabela em segundo plano sempre que um jogo for encerrado via fetch de forma assíncrona considerando as limitações por hora enfrentadas na escola pública.  
+
+Optamos por esta abordagem por se tratar de uma abordagem simples e de implementação fácil, facilidade de manutenção e adequada para o escopo atual. Entretanto reconhecemos que se caso o projeto cresça, seria necessário a escolha de ferramentas mais adequadas aos cenários de acordo com o desempenho e volume de dados. Após finalizado esta etapa, rodamos o Alessa e testamos a funcionalidade da tabela.  
+
+Assim fomos apresentar o projeto na escola e fazer os primeiros testes in loco. Tivemos um retorno bastante satisfatório da equipe pedagógica elogiando não só o projeto como a possibilidade de usá-lo em demandas específicas. Também acharam interessante um projeto que viabilizasse o uso do Laboratório de Informática que não é utilizado. 
+
+Fizemos algumas observações neste momento. Primeiro em como a internet local é limitada o que poderia estragar a experiência do jogo ou até mesmo inviabilizar. Além de possíveis limitações em relação a utilização de ferramentas necessárias para a utilização do Alessa. Voltamos com a felicidade de ver um projeto sendo reconhecido e a certeza de que deveríamos migrar a aplicação para uma versão executável de modo a facilitar distribuição entre as máquinas, instalação e utilização do Alessa pela instituição.  
+
+Então utilizamos o framework Electron que permitiu empacotar a aplicação tanto para Windows (.exe) quanto para Linux (tar.gz), possibilitando a implantação e manuseio futuros. Além disso foi elaborado um roteiro dando uma breve explicação sobre o jogo e orientações em como implantar nas máquinas. Disponibilizamos conjunto em drive no Google e em dispositivo físico (pen drive).  
